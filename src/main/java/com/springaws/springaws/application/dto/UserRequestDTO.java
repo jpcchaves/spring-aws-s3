@@ -1,7 +1,6 @@
 package com.springaws.springaws.application.dto;
 
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.web.multipart.MultipartFile;
 
 public class UserRequestDTO {
     private String firstName;
@@ -9,7 +8,6 @@ public class UserRequestDTO {
     private String email;
     @CPF(message = "CPF inválido")
     private String cpf;
-    private MultipartFile profileImage;
 
     public UserRequestDTO() {
     }
@@ -17,13 +15,11 @@ public class UserRequestDTO {
     public UserRequestDTO(String firstName,
                           String lastName,
                           String email,
-                          String cpf,
-                          MultipartFile profileImage) {
+                          String cpf) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.cpf = cpf;
-        this.profileImage = profileImage;
     }
 
     public String getFirstName() {
@@ -56,13 +52,5 @@ public class UserRequestDTO {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public MultipartFile getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(MultipartFile profileImage) {
-        this.profileImage = profileImage;
     }
 }
