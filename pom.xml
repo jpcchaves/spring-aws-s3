@@ -15,6 +15,7 @@
 	<description>Spring Boot integration with AWS S3 service</description>
 	<properties>
 		<java.version>21</java.version>
+		<mapper.version>3.2.0</mapper.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,6 +47,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${mapper.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
