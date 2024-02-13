@@ -3,3 +3,6 @@ spring:
     import: optional:file:.env[.properties]
 aws:
   region: ${AWS_REGION}
+  s3:
+    buckets:
+      users: ${BUCKET_NAME}
