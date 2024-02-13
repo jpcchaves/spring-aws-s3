@@ -1,4 +1,4 @@
-package com.springaws.springaws.config.aws.s3;
+package com.springaws.springaws.infra.config.aws.s3;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.springaws.springaws.repository;
+package com.springaws.springaws.infra.repository;
 
 import com.springaws.springaws.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
