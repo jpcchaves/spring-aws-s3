@@ -5,8 +5,10 @@ import com.springaws.springaws.application.dto.UserResponseDTO;
 import com.springaws.springaws.application.service.user.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -45,5 +47,20 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable(name = "userId") Long userId) {
         userService.deleteUser(userId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping(
+            value = "/{userId}/profile-image",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE
+    )
+    public ResponseEntity<?> uploadUserProfileImage(@PathVariable(name = "userId") Long userId,
+                                                    @RequestParam("file") MultipartFile file) {
+        userService.uploadUserProfileImage(file, userId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/{userId}/profile-image")
+    public byte[] getUserProfileImage(@PathVariable(name = "userId") Long userId) {
+        return userService.getUserProfileImage(userId);
     }
 }
