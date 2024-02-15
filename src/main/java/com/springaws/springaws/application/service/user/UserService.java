@@ -8,9 +8,18 @@ import java.util.List;
 
 public interface UserService {
     List<UserResponseDTO> getUsersList();
+
     UserResponseDTO getUserById(Long userId);
+
     UserResponseDTO createUser(UserRequestDTO requestDTO);
-    UserResponseDTO updateUser(Long userId, UserRequestDTO requestDTO);
+
+    UserResponseDTO updateUser(Long userId,
+                               UserRequestDTO requestDTO);
+
     void deleteUser(Long userId);
-    void uploadUserProfileImage(MultipartFile file, Long userId);
+
+    void uploadUserProfileImage(MultipartFile file,
+                                Long userId);
+
+    byte[] getUserProfileImage(Long userId);
 }

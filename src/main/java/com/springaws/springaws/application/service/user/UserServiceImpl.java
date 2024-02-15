@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -90,6 +91,22 @@ public class UserServiceImpl implements UserService {
 
         user.setProfileImage(profileImageId);
         saveUser(user);
+    }
+
+    @Override
+    public byte[] getUserProfileImage(Long userId) {
+        User user = findUserById(userId);
+
+        if (user.getProfileImage().isBlank() || Objects.isNull(user.getProfileImage())) {
+            throw new RuntimeException("User doesn't have profile image");
+        }
+
+        return s3Service
+                .getObject(
+                        s3Buckets.getUsers(),
+                        "profile-images/%s/%s".formatted(userId, user.getProfileImage()
+                        )
+                );
     }
 
     private User findUserById(Long userId) {
