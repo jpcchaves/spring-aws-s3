@@ -11,13 +11,14 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import java.io.IOException;
 
 @Service
-public class S3ServiceImpl implements  S3Service {
+public class S3ServiceImpl implements S3Service {
 
     private final S3Client s3Client;
 
     public S3ServiceImpl(S3Client s3Client) {
         this.s3Client = s3Client;
     }
+
 
     @Override
     public void putObject(String bucketName,
@@ -39,7 +40,7 @@ public class S3ServiceImpl implements  S3Service {
                 .key(key)
                 .build();
 
-        ResponseInputStream<GetObjectResponse> response =  s3Client.getObject(getObjectRequest);
+        ResponseInputStream<GetObjectResponse> response = s3Client.getObject(getObjectRequest);
 
         try {
             return response.readAllBytes();
