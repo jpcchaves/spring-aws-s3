@@ -7,6 +7,8 @@ import com.springaws.springaws.application.utils.mapper.MapperUtils;
 import com.springaws.springaws.domain.model.User;
 import com.springaws.springaws.infra.config.aws.s3.S3Buckets;
 import com.springaws.springaws.infra.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +19,8 @@ import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     private final UserRepository userRepository;
     private final S3Service s3Service;
     private final S3Buckets s3Buckets;
@@ -86,6 +90,7 @@ public class UserServiceImpl implements UserService {
             );
 
         } catch (IOException e) {
+            logger.error("IOException occurred trying to upload a file", e);
             throw new RuntimeException(e);
         }
 
