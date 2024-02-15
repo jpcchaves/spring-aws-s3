@@ -2,8 +2,6 @@ package com.springaws.springaws.domain.model;
 
 import jakarta.persistence.*;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "tb_users")
 public class User {
@@ -25,7 +23,7 @@ public class User {
     private String cpf;
 
     @Column(length = 36, unique = true)
-    private UUID profileImage;
+    private String profileImage;
 
     public User() {
     }
@@ -35,7 +33,7 @@ public class User {
                 String lastName,
                 String email,
                 String cpf,
-                UUID profileImage) {
+                String profileImage) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -84,11 +82,11 @@ public class User {
         this.cpf = cpf;
     }
 
-    public UUID getProfileImage() {
+    public String getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(UUID profileImage) {
+    public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 }
